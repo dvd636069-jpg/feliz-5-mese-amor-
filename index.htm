@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Mi Amor - 5 Meses</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=VT323&family=Reenie+Beanie&family=Caveat:wght@700&display=swap" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Creepster&family=Rock+Salt&display=swap');
+
+        body {
+            background-color: #0b0b0f;
+            color: #f3f4f6;
+            font-family: 'Special Elite', monospace;
+            overflow-x: hidden;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* Custom sketchy grungy typography style inspired by the reference image */
+        .sketchy-text {
+            font-family: 'Rock Salt', cursive, sans-serif;
+            letter-spacing: 0.05em;
+            text-shadow: 2px 2px 0px rgba(239, 68, 68, 0.4), -1px -1px 0px rgba(255, 255, 255, 0.2);
+            filter: drop-shadow(0 0 8px rgba(239, 68, 68, 0.3));
+        }
+
+        .grunge-box {
+            background: rgba(20, 20, 26, 0.9);
+            border: 2px dashed rgba(239, 68, 68, 0.4);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8), inset 0 0 20px rgba(239, 68, 68, 0.05);
+            position: relative;
+        }
+
+        .grunge-box::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(circle at 50% 50%, transparent 40%, rgba(0,0,0,0.6) 100%);
+            pointer-events: none;
+        }
+
+        /* Floating hearts animation */
+        @keyframes floatUp {
+            0% {
+                transform: translateY(105vh) scale(0.5) rotate(0deg);
+                opacity: 0;
+            }
+            20% {
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(-20vh) scale(1.2) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .floating-heart {
+            position: absolute;
+            color: rgba(239, 68, 68, 0.6);
+            animation: floatUp 6s linear infinite;
+            pointer-events: none;
+            user-select: none;
+        }
+
+        /* Pulsing glowing red accent */
+        @keyframes pulseGlow {
+            0%, 100% { text-shadow: 0 0 10px rgba(239, 68, 68, 0.6), 0 0 20px rgba(239, 68, 68, 0.4); }
+            50% { text-shadow: 0 0 20px rgba(239, 68, 68, 0.9), 0 0 35px rgba(239, 68, 68, 0.7); }
+        }
+
+        .glow-text {
+            animation: pulseGlow 3s infinite ease-in-out;
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0b0b0f;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #374151;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between relative selection:bg-red-500 selection:text-white">
+
+    <div id="hearts-container" class="fixed inset-0 overflow-hidden pointer-events-none z-0"></div>
+
+    <header class="w-full py-4 px-4 sm:px-8 z-10 flex flex-col sm:flex-row justify-between items-center max-w-4xl mx-auto gap-3">
+        <div class="flex items-center space-x-2">
+            <span class="text-red-500 text-xl animate-pulse">♥</span>
+            <span class="text-xs tracking-widest text-gray-400 uppercase">Edición Especial • 5 Meses</span>
+        </div>
+        <button id="music-toggle" class="bg-zinc-900 border border-zinc-700 hover:border-red-500 text-xs text-gray-300 px-4 py-2.5 rounded-full transition duration-300 flex items-center space-x-2 touch-manipulation">
+            <span id="music-icon">🎵</span>
+            <span id="music-text">Activar Música / Ambiente</span>
+        </button>
+    </header>
+
+    <main class="flex-grow flex items-center justify-center px-3 sm:px-6 py-6 z-10">
+        <div class="grunge-box w-full max-w-3xl rounded-2xl p-5 sm:p-10 text-center transition-all duration-500">
+            
+            <!-- Badge -->
+            <div class="inline-block bg-red-950/60 border border-red-800/60 text-red-400 text-xs px-4 py-1.5 rounded-full mb-6 tracking-widest uppercase">
+                Para el amor de mi vida
+            </div>
+
+            <!-- Main Phrase in Grungy Sketch Font -->
+            <h1 class="sketchy-text text-xl sm:text-3xl lg:text-4xl text-red-500 leading-relaxed mb-8 glow-text">
+                FEELIZ 5 MESE AMORSIOT MIO GRACIAS POR ESTPS 5 MESE A TU LADO MI VIDA
+            </h1>
+
+            <!-- Interactive Counter / Love Note -->
+            <div class="bg-zinc-900/80 border border-zinc-800 rounded-xl p-4 sm:p-6 mb-6 max-w-xl mx-auto text-left shadow-inner">
+                <div class="flex items-center justify-between mb-3 border-b border-zinc-800 pb-2">
+                    <span class="text-xs text-gray-400 font-mono">CARTA_ABIERTA.txt</span>
+                    <span class="text-red-400 text-xs">📅 5 Meses Juntos</span>
+                </div>
+                <p class="text-gray-300 text-xs sm:text-sm leading-relaxed font-mono">
+                    Cada segundo a tu lado se siente como un sueño oscuro y hermoso. Gracias por cada risa, cada abrazo y por hacer de estos 5 meses los mejores de mi existencia...
+                </p>
+            </div>
+
+            <!-- Interactive Buttons -->
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-3 sm:gap-4 mb-4">
+                <button id="love-btn" class="w-full sm:w-auto bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-6 rounded-xl shadow-lg shadow-red-900/55 transition duration-300 transform active:scale-95 text-xs sm:text-sm uppercase tracking-wider flex items-center justify-center space-x-2 touch-manipulation">
+                    <span>✨ Enviar Más Amor</span>
+                </button>
+                <button id="surprise-btn" class="w-full sm:w-auto bg-zinc-800 hover:bg-zinc-700 border border-zinc-700 text-gray-200 font-bold py-3 px-6 rounded-xl transition duration-300 transform active:scale-95 text-xs sm:text-sm uppercase tracking-wider touch-manipulation">
+                    💌 Ver Razón Secreta
+                </button>
+                <button id="reasons-btn" class="w-full sm:w-auto bg-red-950/80 hover:bg-red-900 border border-red-700/60 text-red-200 font-bold py-3 px-6 rounded-xl transition duration-300 transform active:scale-95 text-xs sm:text-sm uppercase tracking-wider touch-manipulation">
+                    📜 Ver razones secretas
+                </button>
+            </div>
+
+            <!-- Secret Message Box (Original) -->
+            <div id="secret-box" class="hidden mt-4 p-4 bg-red-950/30 border border-red-900/50 rounded-xl text-red-300 text-xs sm:text-sm">
+                <p id="secret-text">"Eres lo más bonito que me ha pasado en la vida, mi amorsiot. ¡Por mil meses más a tu lado!"</p>
+            </div>
+
+            <div id="reasons-box" class="hidden mt-6 text-left bg-zinc-950/90 border border-red-900/60 rounded-xl p-4 sm:p-6 shadow-2xl transition-all duration-300">
+                <div class="flex items-center justify-between mb-4 border-b border-zinc-800 pb-2">
+                    <h3 class="text-red-400 font-mono text-sm tracking-wider uppercase font-bold">✨ 100 Razones por las que te amo</h3>
+                    <button id="close-reasons" class="text-gray-400 hover:text-white text-xs px-2 py-1 rounded bg-zinc-900">✕ Cerrar</button>
+                </div>
+                <ol class="space-y-3 text-xs sm:text-sm text-gray-300 font-mono max-h-96 overflow-y-auto pr-2">
+                    <li class="flex items-start space-x-2 bg-zinc-900/50 p-2.5 rounded-lg border border-zinc-800/60">
+                        <span class="text-red-500 font-bold shrink-0">01.</span>
+                        <span>Porque tu sonrisa ilumina incluso mis días más oscuros y fríos.</span>
+                    </li>
+                    <li class="flex items-start space-x-2 bg-zinc-900/50 p-2.5 rounded-lg border border-zinc-800/60">
+                        <span class="text-red-500 font-bold shrink-0">02.</span>
+                        <span>Porque me haces sentir seguro/a y amado/a exactamente tal como soy.</span>
+                    </li>
+                    <li class="flex items-start space-x-2 bg-zinc-900/50 p-2.5 rounded-lg border border-zinc-800/60">
+                        <span class="text-red-500 font-bold shrink-0">03.</span>
+                        <span>Por la forma tan hermosa en que me miras y me abrazas.</span>
+                    </li>
+                    <li class="flex items-start space-x-2 bg-zinc-900/50 p-2.5 rounded-lg border border-zinc-800/60">
+                        <span class="text-red-500 font-bold shrink-0">04.</span>
+                        <span>Porque cada risa y cada conversación contigo es mi momento favorito.</span>
+                    </li>
+                    <li class="flex items-start space-x-2 bg-zinc-900/50 p-2.5 rounded-lg border border-zinc-800/60">
+                        <span class="text-red-500 font-bold shrink-0">05.</span>
+                        <span>Porque tienes un corazón gigante y una bondad infinita que admiro muchísimo.</span>
+                    </li>
+                    <li class="flex items-start space-x-2 bg-zinc-900/50 p-2.5 rounded-lg border border-zinc-800/60">
+                        <span class="text-red-500 font-bold shrink-0">06.</span>
+                        <span>Porque incluso en silencio, estar a tu lado se siente como estar en casa.</span>
+                    </li>
+                    <li class="flex items-start space-x-2 bg-zinc-900/50 p-2.5 rounded-lg border border-zinc-800/60">
+                        <span class="text-red-500 font-bold shrink-0">07.</span>
+                        <span>Porque apoyas mis locuras y me impulsas a ser mejor persona cada día.</span>
+                    </li>
+                    <li class="flex items-start space-x-2 bg-zinc-900/50 p-2.5 rounded-lg border border-zinc-800/60">
+                        <span class="text-red-500 font-bold shrink-0">08.</span>
+                        <span>Por todos los pequeños detalles y momentos únicos que compartimos.</span>
+                    </li>
+                    <li class="flex items-start space-x-2 bg-zinc-900/50 p-2.5 rounded-lg border border-zinc-800/60">
+                        <span class="text-red-500 font-bold shrink-0">09.</span>
+                        <span>Porque eres mi amorsiot, mi cómplice y mi persona favorita en el mundo.</span>
+                    </li>
+                    <li class="flex items-start space-x-2 bg-zinc-900/50 p-2.5 rounded-lg border border-zinc-800/60">
+                        <span class="text-red-500 font-bold shrink-0">10.</span>
+                        <span>Porque estos 5 meses han sido maravillosos y quiero una eternidad más a tu lado.</span>
+                    </li>
+                    <li class="flex items-start space-x-2 bg-zinc-900/50 p-2.5 rounded-lg border border-zinc-800/60"><span class="text-red-500 font-bold shrink-0">11.</span><span>Porque cada vez que te veo, mi corazón vuelve a latir con la misma emoción del primer día.</span></li>
+                    <li class="flex items-start space-x-2 bg-zinc-900/50 p-2.5 rounded-lg border border-zinc-800/60"><span class="text-red-500 font-bold shrink-0">12.</span><span>Porque tienes la risa más contagiosa y hermosa de todo el universo.</span></li>
+                    <li class="flex items-start space-x-2 bg-zinc-900/50 p-2.5 rounded-lg border border-zinc-800/60"><span class="text-red-500 font-bold shrink-0">13.</span><span>Porque me entiendes con solo una mirada y sabes exactamente qué decir.</span></li>
+                    <li class="flex items-start space-x-2 bg-zinc-900/50 p-2.5 rounded-lg border border-zinc-800/60"><span class="text-red-500 font-bold shrink-0">14.</span><span>Porque tus abrazos tienen el poder mágico de curar cualquier mal día.</span></li>
+                    <li class="flex items-start space-x-2 bg-zinc-900/50 p-2.5 rounded-lg border border-zinc-800/60"><span class="text-red-500 font-bold shrink-0">15.</span><span>Porque eres la casualidad más bonita que me ha regalado la vida.</span></li>
+                    <li class="flex items-start space-x-2 bg-zinc-900/50 p-2.5 rounded-lg border border-zinc-800/60"><span class="text-red-500 font-bold shrink-0">16.</span><span>Porque me haces sentir la persona más especial y afortunada del planeta.</span></li>
+                    <li class="flex items-start space-x-2 bg-zinc-900/50 p-2.5 rounded-lg border border-zinc-800/60"><span class="text-red-500 font-bold shrink-0">17.</span><span>Porque compartimos locuras, sueños y secretos que nadie más conoce.</span></li>
+                    <li class="flex items-start space-x-2 bg-zinc-900/50 p-2.5 rounded-lg border border-zinc-800/60"><span class="text-red-500 font-bold shrink-0">18.</span><span>Porque tus manos encajan perfectamente con las mías.</span></li>
+                    <li class="flex items-start space-x-2 bg-zinc-900/50 p-2.5 rounded-lg border border-zinc-800/60"><span class="text-red-500 font-bold shrink-0">19.</span><span>Porque tienes una paciencia infinita y un amor desbordante conmigo.</span></li>
+                    <li class="flex items-start space-x-2 bg-zinc-900/50 p-2.5 rounded-lg border border-zinc-800/60"><span class="text-red-500 font-bold shrink-0">20.</span><span>Porque cada mensaje tuyo me saca una sonrisa enorme sin importar dónde esté.</span></li>
+                    <li class="flex items-start space-x-2 bg-zinc-900/50 p-2.5 rounded-lg border border-zinc-800/60"><span class="text-red-500 font-bold shrink-0">21.</span><span>Porque eres mi paz en medio del caos y las tormentas.</span></li>
+                    <li class="flex items-start space-x-2 bg-zinc-900/50 p-2.5 rounded-lg border border-zinc-800/60"><span class="text-red-500 font-bold shrink-0">22.</span><span>Porque tu voz es mi sonido favorito para escuchar antes de dormir.</span></li>
+                    <li class="flex items-start space-x-2 bg-zinc-900/50 p-2.5 rounded-lg border border-zinc-800/60"><span class="text-red-500 font-bold shrink-0">23.</span><span>Porque confías en mí y me das un espacio seguro en tu corazón.</span></li>
+                    <li class="flex items-start space-x-2 bg-zinc-900/50 p-2.5 rounded-lg border border-zinc-800/60"><span class="text-red-500 font-bold shrink-0">24.</span><span>Porque me aceptas con todos mis defectos y manías.</span></li>
+                    <li class="flex items-start space-x-2 bg-zinc-900/50 p-2.5 rounded-lg border border-zinc-800/60"><span class="text-red-500 font-bold shrink-0">25.</span><span>Porque eres hermosa/o por dentro y por fuera, sin esfuerzo alguno.</span></li>
+                    <li class="flex items-start space-x-2 bg-zinc-900/50 p-2.5 rounded-lg border border-zinc-800/60"><span class="text-red-500 font-bold shrink-0">26.</span><span>Porque cada salida o cita contigo se convierte en un recuerdo inolvidable.</span></li>
+                    <li class="flex items-start space-x-2 bg-zinc-900/50 p-2.5 rounded-lg border border-zinc-800/60"><span class="text-red-500 font-bold shrink-0">27.</span><span>Porque haces que los días malos parezcan insignificantes cuando estoy contigo.</span></li>
+                    <li class="flex items-start space-x-2 bg-zinc-900/50 p-2.5 rounded-lg border border-zinc-800/60"><span class="text-red-500 font-bold shrink-0">28.</span><span>Porque tienes una forma única de ver la vida que me fascina.</span></li>
+                    <li class="flex items-start space-x-2 bg-zinc-900/50 p-2.5 rounded-lg border border-zinc-800/60"><span class="text-red-500 font-bold shrink-0">29.</span><span>Porque eres mi refugio favorito cuando todo lo demás falla.</span></li>
+                    <li class="flex items-start space-x-2 bg-zinc-900/50 p-2.5 rounded-lg border border-zinc-800/60"><span class="text-red-500 font-bold shrink-0">30.</span><span>Porque me inspiras a ser mejor persona cada mañana.</span></li>
+                    <li class="flex items-start space-x-2 bg-zinc-900/50 p-2.5 rounded-lg border border-zinc-800/60"><span class="text-red-500 font-bold shrink-0">31.</span><span>Porque te importan los pequeños detalles tanto como a mí.</span></li>
+                    <li class="flex items-start space-x-2 bg-zinc-900/50 p-2.5 rounded-lg border border-zinc-800/60"><span class="text-red-500 font-bold shrink-0">32.</span><span>Porque me has enseñado el verdadero significado del amor sincero.</span></li>
+                    <li class="flex items-start space-x-2 bg-zinc-900/50 p-2.5 rounded-lg border border-zinc-800/60"><span class="text-red-500 font-bold shrink-0">33.</span><span>Porque me haces reír hasta que me duele el estómago.</span></li>
+                    <li class="flex items-start space-x-2 bg-zinc-900/50 p-2.5 rounded-lg border border-zinc-800/60"><span class="text-red-500 font-bold shrink-0">34.</span><span>Porque celebras mis triunfos como si fueran tuyos propios.</span></li>
+                    <li class="flex items-start space-x-2 bg-zinc-900/50 p-2.5 rounded-lg border border-zinc-800/60"><span class="text-red-500 font-bold shrink-0">35.</span><span>Porque me das fuerzas cuando siento que ya no puedo más.</span></li>
+                    <li class="flex items-start space-x-2 bg-zinc-900/50 p-2.5 rounded-lg border border-zinc-800/60"><span class="text-red-500 font-bold shrink-0">36.</span><span>Porque tienes un sentido del humor increíble que me encanta.</span></li>
+                    <li class="flex items-start space-x-2 bg-zinc-900/50 p-2.5 rounded-lg border border-zinc-800/60"><span class="text-red-500 font-bold shrink-0">37.</span><span>Porque cada beso tuyo sabe a magia y eternidad.</span></li>
+                    <li class="flex items-start space-x-2 bg-zinc-900/50 p-2.5 rounded-lg border border-zinc-800/60"><span class="text-red-500 font-bold shrink-0">38.</span><span>Porque me tratas con tanto respeto, dulzura y cariño.</span></li>
+                    <li class="flex items-start space-x-2 bg-zinc-900/50 p-2.5 rounded-lg border border-zinc-800/60"><span class="text-red-500 font-bold shrink-0">39.</span><span>Porque eres la primera persona en la que pienso al despertar y la última al dormir.</span></li>
+                    <li class="flex items-start space-x-2 bg-zinc-900/50 p-2.5 rounded-lg border border-zinc-800/60"><span class="text-red-500 font-bold shrink-0">40.</span><span>Porque me das los mejores consejos del mundo.</span></li>
+                    <li class="flex items-start space-x-2 bg-zinc-900/50 p-2.5 rounded-lg border border-zinc-800/60"><span class="text-red-500 font-bold shrink-0">41.</span><span>Porque compartimos gustos musicales y canciones que nos definen.</span></li>
+                    <li class="flex items-start space-x-2 bg-zinc-900/50 p-2.5 rounded-lg border border-zinc-800/60"><span class="text-red-500 font-bold shrink-0">42.</span><span>Porque haces que los momentos simples se vuelvan extraordinarios.</span></li>
+                    <li class="flex items-start space-x-2 bg-zinc-900/50 p-2.5 rounded-lg border border-zinc-800/60"><span class="text-red-500 font-bold shrink-0">43.</span><span>Porque tienes una mirada tierna que desarma cualquier coraza mía.</span></li>
+                    <li class="flex items-start space-x-2 bg-zinc-900/50 p-2.5 rounded-lg border border-zinc-800/60"><span class="text-red-500 font-bold shrink-0">44.</span><span>Porque me miras de una forma que nadie más lo ha hecho jamás.</span></li>
+                    <li class="flex items-start space-x-2 bg-zinc-900/50 p-2.5 rounded-lg border border-zinc-800/60"><span class="text-red-500 font-bold shrink-0">45.</span><span>Porque eres mi cómplice en todas mis travesuras y locuras.</span></li>
+                    <li class="flex items-start space-x-2 bg-zinc-900/50 p-2.5 rounded-lg border border-zinc-800/60"><span class="text-red-500 font-bold shrink-0">46.</span><span>Porque me das paz mental y emocional con solo estar cerca.</span></li>
+                    <li class="flex items-start space-x-2 bg-zinc-900/50 p-2.5 rounded-lg border border-zinc-800/60"><span class="text-red-500 font-bold shrink-0">47.</span><span>Porque te preocupas genuinamente por mi bienestar y felicidad.</span></li>
+                    <li class="flex items-start space-x-2 bg-zinc-900/50 p-2.5 rounded-lg border border-zinc-800/60"><span class="text-red-500 font-bold shrink-0">48.</span><span>Porque tienes una inteligencia y una chispa que me cautivan cada día más.</span></li>
+                    <li class="flex items-start space-x-2 bg-zinc-900/50 p-2.5 rounded-lg border border-zinc-800/60"><span class="text-red-500 font-bold shrink-0">49.</span><span>Porque me demuestras tu amor con hechos y no solo con palabras.</span></li>
+                    <li class="flex items-start space-x-2 bg-zinc-900/50 p-2.5 rounded-lg border border-zinc-800/60"><span class="text-red-500 font-bold shrink-0">50.</span><span>Porque llevamos 5 meses construyendo una historia preciosa juntos.</span></li>
+                    <li class="flex items-start space-x-2 bg-zinc-900/50 p-2.5 rounded-lg border border-zinc-800/60"><span class="text-red-500 font-bold shrink-0">51.</span><span>Porque siempre encuentras la manera de sacarme una sonrisa en mis peores días.</span></li>
+                    <li class="flex items-start space-x-2 bg-zinc-900/50 p-2.5 rounded-lg border border-zinc-800/60"><span class="text-red-500 font-bold shrink-0">52.</span><span>Porque me haces sentir que todo es posible cuando estamos unidos.</span></li>
+                    <li class="flex items-start space-x-2 bg-zinc-900/50 p-2.5 rounded-lg border border-zinc-800/60"><span class="text-red-500 font-bold shrink-0">53.</span><span>Porque valoras el tiempo que pasamos juntos tanto como yo.</span></li>
+                    <li class="flex items-start space-x-2 bg-zinc-900/50 p-2.5 rounded-lg border border-zinc-800/60"><span class="text-red-500 font-bold shrink-0">54.</span><span>Porque tienes unos ojos preciosos en los que me perdería por horas.</span></li>
+                    <li class="flex items-start space-x-2 bg-zinc-900/50 p-2.5 rounded-lg border border-zinc-800/60"><span class="text-red-500 font-bold shrink-0">55.</span><span>Porque respetas mis tiempos, mis espacios y mis silencios.</span></li>
+                    <li class="flex items-start space-x-2 bg-zinc-900/50 p-2.5 rounded-lg border border-zinc-800/60"><span class="text-red-500 font-bold shrink-0">56.</span><span>Porque haces que me enamore de ti un poquito más cada amanecer.</span></li>
+                    <li class="flex items-start space-x-2 bg-zinc-900/50 p-2.5 rounded-lg border border-zinc-800/60"><span class="text-red-500 font-bold shrink-0">57.</span><span>Porque eres incondicional en las buenas y en las malas.</span></li>
+                    <li class="flex items-start space-x-2 bg-zinc-900/50 p-2.5 rounded-lg border border-zinc-800/60"><span class="text-red-500 font-bold shrink-0">58.</span><span>Porque compartes tus sueños conmigo y me haces parte de tu futuro.</span></li>
+                    <li class="flex items-start space-x-2 bg-zinc-900/50 p-2.5 rounded-lg border border-zinc-800/60"><span class="text-red-500 font-bold shrink-0">59.</span><span>Porque tienes gestos tan tiernos que me derriten el corazón al instante.</span></li>
+                    <li class="flex items-start space-x-2 bg-zinc-900/50 p-2.5 rounded-lg border border-zinc-800/60"><span class="text-red-500 font-bold shrink-0">60.</span><span>Porque contigo no necesito fingir ser alguien que no soy.</span></li>
+                    <li class="flex items-start space-x-2 bg-zinc-900/50 p-2.5 rounded-lg border border-zinc-800/60"><span class="text-red-500 font-bold shrink-0">61.</span><span>Porque tus abrazos son mi casa en cualquier parte del mundo.</span></li>
+                    <li class="flex items-start space-x-2 bg-zinc-900/50 p-2.5 rounded-lg border border-zinc-800/60"><span class="text-red-500 font-bold shrink-0">62.</span><span>Porque me escuchas con atención genuina cuando necesito desahogarme.</span></li>
+                    <li class="flex items-start space-x-2 bg-zinc-900/50 p-2.5 rounded-lg border border-zinc-800/60"><span class="text-red-500 font-bold shrink-0">63.</span><span>Porque tienes una energía hermosa que ilumina cualquier habitación.</span></li>
+                    <li class="flex items-start space-x-2 bg-zinc-900/50 p-2.5 rounded-lg border border-zinc-800/60"><span class="text-red-500 font-bold shrink-0">64.</span><span>Porque te esforzaste en conocerme y entenderme tan profundamente.</span></li>
+                    <li class="flex items-start space-x-2 bg-zinc-900/50 p-2.5 rounded-lg border border-zinc-800/60"><span class="text-red-500 font-bold shrink-0">65.</span><span>Porque eres mi lugar seguro en medio de cualquier tormenta.</span></li>
+                    <li class="flex items-start space-x-2 bg-zinc-900/50 p-2.5 rounded-lg border border-zinc-800/60"><span class="text-red-500 font-bold shrink-0">66.</span><span>Porque me motivas a cumplir mis metas más ambiciosas.</span></li>
+                    <li class="flex items-start space-x-2 bg-zinc-900/50 p-2.5 rounded-lg border border-zinc-800/60"><span class="text-red-500 font-bold shrink-0">67.</span><span>Porque tienes una valentía y una fuerza que me inspiran profundamente.</span></li>
+                    <li class="flex items-start space-x-2 bg-zinc-900/50 p-2.5 rounded-lg border border-zinc-800/60"><span class="text-red-500 font-bold shrink-0">68.</span><span>Porque cada caricia tuya me llena de una paz incomparable.</span></li>
+                    <li class="flex items-start space-x-2 bg-zinc-900/50 p-2.5 rounded-lg border border-zinc-800/60"><span class="text-red-500 font-bold shrink-0">69.</span><span>Porque eres la persona con la que quiero hablar de todo y de nada al mismo tiempo.</span></li>
+                    <li class="flex items-start space-x-2 bg-zinc-900/50 p-2.5 rounded-lg border border-zinc-800/60"><span class="text-red-500 font-bold shrink-0">70.</span><span>Porque me haces sentir valorado/a y amado/a todos los días del año.</span></li>
+                    <li class="flex items-start space-x-2 bg-zinc-900/50 p-2.5 rounded-lg border border-zinc-800/60"><span class="text-red-500 font-bold shrink-0">71.</span><span>Porque tienes una imaginación y una creatividad fascinantes.</span></li>
+                    <li class="flex items-start space-x-2 bg-zinc-900/50 p-2.5 rounded-lg border border-zinc-800/60"><span class="text-red-500 font-bold shrink-0">72.</span><span>Porque me defiendes y me cuidas con un cariño desinteresado.</span></li>
+                    <li class="flex items-start space-x-2 bg-zinc-900/50 p-2.5 rounded-lg border border-zinc-800/60"><span class="text-red-500 font-bold shrink-0">73.</span><span>Porque cada detalle pequeño que tienes conmigo se queda grabado en mi alma.</span></li>
+                    <li class="flex items-start space-x-2 bg-zinc-900/50 p-2.5 rounded-lg border border-zinc-800/60"><span class="text-red-500 font-bold shrink-0">74.</span><span>Porque eres mi sol en los días más nublados y fríos.</span></li>
+                    <li class="flex items-start space-x-2 bg-zinc-900/50 p-2.5 rounded-lg border border-zinc-800/60"><span class="text-red-500 font-bold shrink-0">75.</span><span>Porque me ayudas a ver el lado positivo de las situaciones difíciles.</span></li>
+                    <li class="flex items-start space-x-2 bg-zinc-900/50 p-2.5 rounded-lg border border-zinc-800/60"><span class="text-red-500 font-bold shrink-0">76.</span><span>Porque tienes un corazón noble que siempre busca ayudar a los demás.</span></li>
+                    <li class="flex items-start space-x-2 bg-zinc-900/50 p-2.5 rounded-lg border border-zinc-800/60"><span class="text-red-500 font-bold shrink-0">77.</span><span>Porque nuestros caminos se cruzaron en el momento exacto y perfecto.</span></li>
+                    <li class="flex items-start space-x-2 bg-zinc-900/50 p-2.5 rounded-lg border border-zinc-800/60"><span class="text-red-500 font-bold shrink-0">78.</span><span>Porque me encantas cuando te emocionas hablando de lo que te apasiona.</span></li>
+                    <li class="flex items-start space-x-2 bg-zinc-900/50 p-2.5 rounded-lg border border-zinc-800/60"><span class="text-red-500 font-bold shrink-0">79.</span><span>Porque eres mi hogar favorito en todo este vasto universo.</span></li>
+                    <li class="flex items-start space-x-2 bg-zinc-900/50 p-2.5 rounded-lg border border-zinc-800/60"><span class="text-red-500 font-bold shrink-0">80.</span><span>Porque me haces creer en los finales felices y en el amor verdadero.</span></li>
+                    <li class="flex items-start space-x-2 bg-zinc-900/50 p-2.5 rounded-lg border border-zinc-800/60"><span class="text-red-500 font-bold shrink-0">81.</span><span>Porque cada instante a tu lado es un regalo que atesoro con toda mi alma.</span></li>
+                    <li class="flex items-start space-x-2 bg-zinc-900/50 p-2.5 rounded-lg border border-zinc-800/60"><span class="text-red-500 font-bold shrink-0">82.</span><span>Porque tienes una sonrisa que tiene el superpoder de alegrarme el día entero.</span></li>
+                    <li class="flex items-start space-x-2 bg-zinc-900/50 p-2.5 rounded-lg border border-zinc-800/60"><span class="text-red-500 font-bold shrink-0">83.</span><span>Porque me proteges y cuidas como nadie más lo ha hecho.</span></li>
+                    <li class="flex items-start space-x-2 bg-zinc-900/50 p-2.5 rounded-lg border border-zinc-800/60"><span class="text-red-500 font-bold shrink-0">84.</span><span>Porque nuestras charlas nocturnas son lo mejor que me puede pasar antes de dormir.</span></li>
+                    <li class="flex items-start space-x-2 bg-zinc-900/50 p-2.5 rounded-lg border border-zinc-800/60"><span class="text-red-500 font-bold shrink-0">85.</span><span>Porque compartes tus alegrías y tus tristezas conmigo con total confianza.</span></li>
+                    <li class="flex items-start space-x-2 bg-zinc-900/50 p-2.5 rounded-lg border border-zinc-800/60"><span class="text-red-500 font-bold shrink-0">86.</span><span>Porque tienes una sensibilidad hermosa que me enseña a amar más profundo.</span></li>
+                    <li class="flex items-start space-x-2 bg-zinc-900/50 p-2.5 rounded-lg border border-zinc-800/60"><span class="text-red-500 font-bold shrink-0">87.</span><span>Porque contigo aprendí que el amor bonito sí existe y es real.</span></li>
+                    <li class="flex items-start space-x-2 bg-zinc-900/50 p-2.5 rounded-lg border border-zinc-800/60"><span class="text-red-500 font-bold shrink-0">88.</span><span>Porque me das los besos más dulces y sinceros del mundo.</span></li>
+                    <li class="flex items-start space-x-2 bg-zinc-900/50 p-2.5 rounded-lg border border-zinc-800/60"><span class="text-red-500 font-bold shrink-0">89.</span><span>Porque eres mi mejor compañero/a de aventuras y de vida.</span></li>
+                    <li class="flex items-start space-x-2 bg-zinc-900/50 p-2.5 rounded-lg border border-zinc-800/60"><span class="text-red-500 font-bold shrink-0">90.</span><span>Porque cada día descubro algo nuevo en ti que me hace amarte todavía más.</span></li>
+                    <li class="flex items-start space-x-2 bg-zinc-900/50 p-2.5 rounded-lg border border-zinc-800/60"><span class="text-red-500 font-bold shrink-0">91.</span><span>Porque me haces sentir mariposas en el estómago aunque ya llevemos meses juntos.</span></li>
+                    <li class="flex items-start space-x-2 bg-zinc-900/50 p-2.5 rounded-lg border border-zinc-800/60"><span class="text-red-500 font-bold shrink-0">92.</span><span>Porque tienes una bondad inagotable que me deja sin palabras.</span></li>
+                    <li class="flex items-start space-x-2 bg-zinc-900/50 p-2.5 rounded-lg border border-zinc-800/60"><span class="text-red-500 font-bold shrink-0">93.</span><span>Porque eres la melodía más bonita que suena en mi cabeza todo el día.</span></li>
+                    <li class="flex items-start space-x-2 bg-zinc-900/50 p-2.5 rounded-lg border border-zinc-800/60"><span class="text-red-500 font-bold shrink-0">94.</span><span>Porque tu felicidad se ha convertido en una de mis prioridades más grandes.</span></li>
+                    <li class="flex items-start space-x-2 bg-zinc-900/50 p-2.5 rounded-lg border border-zinc-800/60"><span class="text-red-500 font-bold shrink-0">95.</span><span>Porque me das el impulso necesario para comerme el mundo entero.</span></li>
+                    <li class="flex items-start space-x-2 bg-zinc-900/50 p-2.5 rounded-lg border border-zinc-800/60"><span class="text-red-500 font-bold shrink-0">96.</span><span>Porque tienes un alma pura y transparente que brilla con luz propia.</span></li>
+                    <li class="flex items-start space-x-2 bg-zinc-900/50 p-2.5 rounded-lg border border-zinc-800/60"><span class="text-red-500 font-bold shrink-0">97.</span><span>Porque me haces sentir sumamente orgulloso/a de estar a tu lado.</span></li>
+                    <li class="flex items-start space-x-2 bg-zinc-900/50 p-2.5 rounded-lg border border-zinc-800/60"><span class="text-red-500 font-bold shrink-0">98.</span><span>Porque cada promesa que nos hacemos tiene un valor sagrado para mí.</span></li>
+                    <li class="flex items-start space-x-2 bg-zinc-900/50 p-2.5 rounded-lg border border-zinc-800/60"><span class="text-red-500 font-bold shrink-0">99.</span><span>Porque eres el sueño más hermoso hecho realidad en mi vida.</span></li>
+                    <li class="flex items-start space-x-2 bg-zinc-900/50 p-2.5 rounded-lg border border-zinc-800/60"><span class="text-red-500 font-bold shrink-0">100.</span><span>Porque te amo hoy, mañana, por estos 5 meses y por toda la eternidad, mi amorsiot.</span></li>
+                </ol>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="w-full py-4 text-center text-xs text-gray-500 z-10 font-mono px-4">
+        Hecho con todo mi corazón para ti • <span class="text-red-500">Te amo</span>
+    </footer>
+
+    <script>
+        // Floating Hearts Generator
+        const heartsContainer = document.getElementById('hearts-container');
+        const symbols = ['♥', '🖤', '✦', '★', '❤️'];
+
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('floating-heart');
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.fontSize = (Math.random() * 18 + 10) + 'px';
+            heart.style.animationDuration = (Math.random() * 4 + 4) + 's';
+            heart.innerHTML = symbols[Math.floor(Math.random() * symbols.length)];
+            heartsContainer.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 6000);
+        }
+
+        setInterval(createHeart, 500);
+
+        // Interactive Button: Love explosion
+        const loveBtn = document.getElementById('love-btn');
+        loveBtn.addEventListener('click', () => {
+            for(let i = 0; i < 12; i++) {
+                setTimeout(createHeart, i * 70);
+            }
+            loveBtn.classList.add('bg-red-700');
+            setTimeout(() => loveBtn.classList.remove('bg-red-700'), 300);
+        });
+
+        // Surprise Button Toggle
+        const surpriseBtn = document.getElementById('surprise-btn');
+        const secretBox = document.getElementById('secret-box');
+        
+        const secretMessages = [
+            "Eres lo más bonito que me ha pasado en la vida, mi amorsiot. ¡Por mil meses más a tu lado!",
+            "Me encantas tal como eres, con tus locuras y tu hermosa forma de ser. ¡Felices 5 meses!",
+            "Cada día contigo es mi parte favorita del día. Gracias por existir.",
+            "Tus abrazos son mi lugar seguro en este mundo. ¡Te amo con toda el alma!"
+        ];
+
+        surpriseBtn.addEventListener('click', () => {
+            const randomMsg = secretMessages[Math.floor(Math.random() * secretMessages.length)];
+            document.getElementById('secret-text').innerText = `"${randomMsg}"`;
+            secretBox.classList.toggle('hidden');
+            // Hide reasons if open
+            document.getElementById('reasons-box').classList.add('hidden');
+        });
+
+        // 10 Reasons Button Toggle
+        const reasonsBtn = document.getElementById('reasons-btn');
+        const reasonsBox = document.getElementById('reasons-box');
+        const closeReasons = document.getElementById('close-reasons');
+
+        reasonsBtn.addEventListener('click', () => {
+            reasonsBox.classList.toggle('hidden');
+            // Hide secret box if open
+            secretBox.classList.add('hidden');
+            if(!reasonsBox.classList.contains('hidden')) {
+                reasonsBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
+        });
+
+        closeReasons.addEventListener('click', () => {
+            reasonsBox.classList.add('hidden');
+        });
+
+        // Ambient Synthesizer / Audio simulation using Web Audio API
+        let audioCtx = null;
+        let isPlaying = false;
+        let intervalId = null;
+
+        const musicToggle = document.getElementById('music-toggle');
+        const musicIcon = document.getElementById('music-icon');
+        const musicText = document.getElementById('music-text');
+
+        musicToggle.addEventListener('click', () => {
+            if (!isPlaying) {
+                try {
+                    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                    isPlaying = true;
+                    musicIcon.innerText = '⏸️';
+                    musicText.innerText = 'Música Activa';
+                    
+                    const notes = [261.63, 329.63, 392.00, 523.25];
+                    let index = 0;
+
+                    intervalId = setInterval(() => {
+                        if(!audioCtx) return;
+                        const osc = audioCtx.createOscillator();
+                        const gain = audioCtx.createGain();
+                        
+                        osc.type = 'sine';
+                        osc.frequency.value = notes[index % notes.length];
+                        index++;
+
+                        gain.gain.setValueAtTime(0.04, audioCtx.currentTime);
+                        gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 2);
+
+                        osc.connect(gain);
+                        gain.connect(audioCtx.destination);
+
+                        osc.start();
+                        osc.stop(audioCtx.currentTime + 2);
+                    }, 1200);
+
+                } catch(e) {
+                    console.log("Audio not supported or blocked");
+                }
+            } else {
+                if(intervalId) clearInterval(intervalId);
+                if(audioCtx) audioCtx.close();
+                audioCtx = null;
+                isPlaying = false;
+                musicIcon.innerText = '🎵';
+                musicText.innerText = 'Activar Música / Ambiente';
+            }
+        });
+    </script>
+</body>
+</html>
